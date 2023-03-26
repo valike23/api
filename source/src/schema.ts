@@ -131,11 +131,11 @@ export const typeDefs = gql`
     postsByPage(page: String, category: String): BlogPageResponse
     post(slug: String!): PostSingle
   },
-  type Query {
+  type Mutation {
     
     login(email: String!, password: String!): String
   },
-  type Query {
+  type Mutation {
     
     register(email: String!, password: String!, name: String): String
   }

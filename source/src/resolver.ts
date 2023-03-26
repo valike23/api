@@ -248,6 +248,9 @@ export const resolvers = {
         categories: require('./data/blog-page.json')['categories']['classic'],
       };
     },
+    
+  },
+  Mutation:{
     login:(root, args, ctx, info)=>{
       const {password, email} = args;
       console.log('argument', args);
@@ -262,6 +265,6 @@ export const resolvers = {
       const authHelpher = new Auth(email, password, name);
       return authHelpher.register();
     }
-  },
+  }
 };
 
