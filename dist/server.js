@@ -9,9 +9,13 @@ const { ApolloServer } = require('apollo-server-express');
 const { ApolloServerPluginDrainHttpServer } = require('apollo-server-core');
 const schema_1 = require("./src/schema");
 const resolver_1 = require("./src/resolver");
+const cors_1 = __importDefault(require("cors"));
 async function startApolloServer(typeDefs, resolvers) {
     const app = (0, express_1.default)();
     app.use('/uploads', express_1.default.static('../images'));
+    app.use((0, cors_1.default)({
+        origin: '*'
+    }));
     const httpServer = http.createServer(app);
     const server = new ApolloServer({
         typeDefs,
