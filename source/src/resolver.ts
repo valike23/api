@@ -1,3 +1,4 @@
+import { Admin } from "./helphers/admin";
 import { Auth } from "./helphers/auth";
 
 export const resolvers = {
@@ -264,6 +265,20 @@ export const resolvers = {
       const {password, email, name} = args;
       const authHelpher = new Auth(email, password, name);
       return authHelpher.register();
+    },
+    adminLogin:(root, args, ctx, info)=>{
+      const {password, email} = args;
+      console.log('argument', args);
+      const adminHelpher = new Admin(email, password);
+      return adminHelpher.login();
+
+    },
+    adminRegister:(root, args, ctx, info)=>{
+
+      console.log('argument', args);
+      const {password, email, name} = args;
+      const adminHelpher = new Admin(email, password, name);
+      return adminHelpher.register();
     }
   }
 };
